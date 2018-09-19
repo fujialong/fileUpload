@@ -134,9 +134,9 @@
     </dependency>
 
     <dependency>
-      <groupId>top.javatool.fileuplod</groupId>
-      <artifactId>file-upload</artifactId>
-      <version>1.0</version>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+      <version>4.1.13</version>
     </dependency>
 
 

@@ -12,10 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import top.javatool.fileupload.FileUpload;
-import top.javatool.fileupload.exception.FileTypeException;
-
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
@@ -24,9 +20,6 @@ public class FileUploadController {
 
     @Autowired
     private  StorageService storageService;
-
-    @org.springframework.beans.factory.annotation.Autowired
-    private FileUpload fileUpload;
 
 
 
@@ -84,18 +77,5 @@ public class FileUploadController {
         return ResponseEntity.notFound().build();
     }
 
-    @org.springframework.web.bind.annotation.RequestMapping(value = "upload")
-    public void testUpload(MultipartFile file, HttpServletRequest request){
-        //保存文件到指定路径并返回图片url
-        try {
-            String imageUrl = fileUpload.saveFile(file,request);
-            System.out.println(imageUrl);
-        } catch (FileTypeException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //http://www.test.com/test/yyyy-MM-dd/随机数字（时间戳+6位随机数).文件后缀
-    }
 
 }

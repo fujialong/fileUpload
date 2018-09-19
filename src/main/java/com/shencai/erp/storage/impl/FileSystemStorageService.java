@@ -1,10 +1,10 @@
 package com.shencai.erp.storage.impl;
 
 
+import cn.hutool.setting.dialect.Props;
 import com.shencai.erp.storage.StorageService;
 import com.shencai.erp.storage.exception.StorageException;
 import com.shencai.erp.storage.exception.StorageFileNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
 /**
@@ -32,8 +31,10 @@ import java.util.stream.Stream;
 @Service
 public class FileSystemStorageService implements StorageService {
 
-    private String location = "upload-dir";
-    private final Path rootLocation = Paths.get(location);
+    private String location = "files";
+    Props props = new Props("uploadAddress.properties");
+
+    private final Path rootLocation = Paths.get(props.getStr("upload.address"),location);
 
     @Override
     public void store(MultipartFile file) {
@@ -113,7 +114,7 @@ public class FileSystemStorageService implements StorageService {
         String location = null;
         try {
             location = this.getClass().getResource("/").toURI().getPath();
-            String root = location.substring(0, location.indexOf("WEB-INF"));
+            //String root = location.substring(0, location.indexOf("WEB-INF"));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
