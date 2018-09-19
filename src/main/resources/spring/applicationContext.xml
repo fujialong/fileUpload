@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <context:component-scan base-package="com.shencai.erp">
         <context:exclude-filter type="annotation"
@@ -9,4 +9,13 @@
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
+
+    <bean id="fileupload" class="top.javatool.fileupload.FileUpload"
+          p:filePath="/data/www/"
+          p:filePrefix="test/"
+          p:fileType="jpg,gif,png,bmp,jpeg"
+          p:fileHeader="FFD8FF,89504E47,47494638,49492A00,424D"
+          p:host="www.test.com"
+          p:ip=""
+    />
 </beans>

@@ -133,6 +133,13 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>top.javatool.fileuplod</groupId>
+      <artifactId>file-upload</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+
   </dependencies>
 
   <build>
